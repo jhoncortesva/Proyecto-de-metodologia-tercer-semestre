@@ -50,7 +50,7 @@ x_cambio=0
 obstaculos= [890, 1000, 1500, 2000, 2500]
 obstaculo_velocidad = 3
 activo= False
-salud=500
+salud=100
 mixer.set_num_channels(20)
 
 
@@ -103,7 +103,7 @@ while funcionar:
                 mixer.music.play(-1)
 
                 activo=True
-                salud=500
+                salud=100
                 jugador_x = 50
                 puntaje = 0
                 obstaculos= [890, 1000, 1500, 2000, 2500]
@@ -151,7 +151,7 @@ while funcionar:
                 fondo = verde2
                 color_piso=rosa_pastel_oscurito
             if puntaje == 55:
-                obstaculo_velocidad = 8
+                obstaculo_velocidad = 9
                 color_piso=rosa_pastel_oscuro
                 mixer.music.load('skyarenafinal.wav')
                 mixer.music.play(-1)
@@ -164,6 +164,7 @@ while funcionar:
             if jugador.colliderect(obstaculo0) or jugador.colliderect(obstaculo1) or jugador.colliderect(obstaculo2) or jugador.colliderect(obstaculo3) or jugador.colliderect(obstaculo4) :
                 
                 salud= salud-1
+                
                 
 
             if salud == 0:
