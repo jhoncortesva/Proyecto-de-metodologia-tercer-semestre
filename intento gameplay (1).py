@@ -54,6 +54,8 @@ salud=100
 mixer.set_num_channels(20)
 
 
+
+
 pantalla=pygame.display.set_mode([anchura, altura])
 pygame.display.set_caption('Cube Jumper')
 fondo= celeste_pastel
@@ -87,11 +89,7 @@ while funcionar:
     pantalla.blit(texto_salud, (350, 340))
     piso=pygame.draw.rect(pantalla, color_piso, (0, 220, anchura, 50))
     jugador=pygame.draw.rect(pantalla, verde, [jugador_x, jugador_y, 20, 20])
-    obstaculo0 = pygame.draw.rect(pantalla, rojo_pastel, [obstaculos[0], 200, 20, 20])
-    obstaculo1 = pygame.draw.rect(pantalla, morado_pastel, [obstaculos[1], 200, 20, 20])
-    obstaculo2 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[2], 200, 20, 20])
-    obstaculo3 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[3], 200, 20, 20])
-    obstaculo4 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[4], 200, 20, 20])
+    
 
 
     for event in pygame.event.get():
@@ -106,7 +104,7 @@ while funcionar:
                 salud=100
                 jugador_x = 50
                 puntaje = 0
-                obstaculos= [890, 1000, 1500, 2000, 2500]
+                obstaculos= [890, 1000, 1500, 2000, 2500, ]
                 obstaculo_velocidad = 3
                 fondo = celeste_pastel
                 color_piso=rosa_pastel
@@ -125,6 +123,14 @@ while funcionar:
             if event.key == pygame.K_LEFT:
                 x_cambio = 0  
 
+    if puntaje < 10:
+        obstaculo0 = pygame.draw.rect(pantalla, rojo_pastel, [obstaculos[0], 200, 20, 20])
+        obstaculo1 = pygame.draw.rect(pantalla, morado_pastel, [obstaculos[1], 200, 20, 20])
+        obstaculo2 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[2], 200, 20, 20])
+        obstaculo3 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[3], 200, 20, 20])
+        obstaculo4 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[4], 200, 20, 20])
+        
+
     for i in range(len(obstaculos)):
         if activo:
             obstaculos[i] -= obstaculo_velocidad
@@ -135,14 +141,26 @@ while funcionar:
                 color_piso=rosa_pastel_bajo
                 obstaculo_velocidad = 4
                 fondo= fondo2
+            if puntaje >=10 and puntaje<30:
+                obstaculo0 = pygame.draw.rect(pantalla, rojo_pastel, [obstaculos[0], 180, 20, 40])
+                obstaculo1 = pygame.draw.rect(pantalla, morado_pastel, [obstaculos[1], 180, 20, 40])
+                obstaculo2 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[2], 180, 20, 40])
+                obstaculo3 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[3], 180, 20, 40])
+                obstaculo4 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[4], 180, 20, 40])
 
             if puntaje > 54:
+
+                obstaculo0 = pygame.draw.circle(pantalla, rojo_pastel, (obstaculos[0], 200), 10)
+                obstaculo1 = pygame.draw.circle(pantalla, rojo_pastel, (obstaculos[1], 200), 10)
+                obstaculo2 = pygame.draw.circle(pantalla, rojo_pastel, (obstaculos[2], 200), 10)
+                obstaculo3 = pygame.draw.circle(pantalla, rojo_pastel, (obstaculos[3], 200), 10)
+                obstaculo4 = pygame.draw.circle(pantalla, rojo_pastel, (obstaculos[4], 200), 10)
                 for j in lista_coordenadas:
                     
 
                     x = j[0]
                     y = j[1]
-                    pygame.draw.circle(pantalla, blanco_pastel, (x, y), 2)
+                    pygame.draw.line(pantalla, blanco_pastel, (x, y), (x, y), 2)
                     j[1] +=1
                     if j[1] > 500:
                         j[1] = 0
@@ -150,6 +168,12 @@ while funcionar:
                 obstaculo_velocidad = 5
                 fondo = verde2
                 color_piso=rosa_pastel_oscurito
+            if puntaje >= 30 and puntaje <55:
+                obstaculo0 = pygame.draw.rect(pantalla, rojo_pastel, [obstaculos[0], 200, 40, 20])
+                obstaculo1 = pygame.draw.rect(pantalla, morado_pastel, [obstaculos[1], 200, 40, 20])
+                obstaculo2 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[2], 200, 40, 20])
+                obstaculo3 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[3], 200, 40, 20])
+                obstaculo4 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[4], 200, 40, 20])
             if puntaje == 55:
                 obstaculo_velocidad = 9
                 color_piso=rosa_pastel_oscuro
@@ -161,7 +185,7 @@ while funcionar:
                 
                 
 
-            if jugador.colliderect(obstaculo0) or jugador.colliderect(obstaculo1) or jugador.colliderect(obstaculo2) or jugador.colliderect(obstaculo3) or jugador.colliderect(obstaculo4) :
+            if jugador.colliderect(obstaculo0) or jugador.colliderect(obstaculo1) or jugador.colliderect(obstaculo2) or jugador.colliderect(obstaculo3) or jugador.colliderect(obstaculo4):
                 
                 salud= salud-1
                 
