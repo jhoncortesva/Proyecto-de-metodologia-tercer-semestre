@@ -160,7 +160,7 @@ while funcionar:
 
                     x = j[0]
                     y = j[1]
-                    pygame.draw.line(pantalla, blanco_pastel, (x, y), (x, y), 2)
+                    pygame.draw.line(pantalla, azul_pastel, (x, y), (x, y), 2)
                     j[1] +=1
                     if j[1] > 500:
                         j[1] = 0
