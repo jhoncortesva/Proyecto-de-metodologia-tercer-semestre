@@ -2,15 +2,18 @@ from operator import truediv
 from pygame import mixer
 import pygame, sys, random, time, math
 
+
+#INICIADOR MÚSICA
 mixer.init()
+#INICIADOR FUENTE
 pygame.font.init()
+#INICIADOR PYGAME
 pygame.init()
-#rosas
+#COLORES
 rosa_pastel=(255, 154, 162)
 rosa_pastel_oscurito=(204, 143, 148)
 rosa_pastel_oscuro=(201, 153, 175)
 rosa_pastel_bajo=(222, 110, 106)
-#rosas
 celeste_pastel=(179, 255, 255)
 blanco_pastel=(255, 255, 216)
 verde=(43, 153, 53)
@@ -22,14 +25,18 @@ atardecer=(253, 223, 126)
 verde_oscuro=(45, 87, 44)
 verde2=(189, 174, 110)
 negro=(0, 0, 0)
+color_piso=rosa_pastel
+#RESOLUCIÓN VENTANA DE JUEGO
 anchura=800
 altura=400
-color_piso=rosa_pastel
+
 
 fondote="fondo1.png"
 
 frases_feas=["Prueba abrir los ojos", "Una vuelta mas a la manzana", "Hoy podría ser el día", "Son solo 4 botones", "¡Tú Puedes!", "¡Excelente Trabajo!", "Vamos, una vez mas", "¿Nota superior?", "¡Lo intentamos!", "...Jhon estuvo aquí..."]
 frase_escoger=random.choice(frases_feas)
+
+#LÓGICA LLUVIA
 
 lista_coordenadas=[]
 
@@ -54,10 +61,12 @@ obstaculos= [890, 1000, 1500, 2000, 2500]
 obstaculo_velocidad = 3
 activo= False
 salud=100
+
+#escoger número de canales
 mixer.set_num_channels(20)
 
 
-
+#capción de la ventana
 pantalla=pygame.display.set_mode([anchura, altura])
 pygame.display.set_caption('Cube Jumper')
 fondo= celeste_pastel
@@ -76,7 +85,7 @@ tiles = math.ceil(anchura  / bg_width) + 1
 
 funcionar=True
 
-
+#carga de fps y dibujado en pantalla
 while funcionar:
     
     temporizador.tick(fps)
@@ -92,7 +101,7 @@ while funcionar:
             scroll = 0
     
     if not activo:
-        
+        #fuentes de pantalla
         texto_instructivo= font.render(f'Para empezar ¡Salta!', True, azul_pastel)
         pantalla.blit(texto_instructivo, (350, 100))
         texto_instructivo2= font.render(f'Utiliza las flechas para moverte y saltar', True, azul_pastel)
@@ -110,7 +119,7 @@ while funcionar:
     jugador=pygame.draw.rect(pantalla, verde, [jugador_x, jugador_y, 20, 20])
     
 
-
+    #loop principal
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             funcionar=False
@@ -215,7 +224,7 @@ while funcionar:
             if salud == 0:
                 activo = False
 
-
+    #lógica de salto
     if 0 <= jugador_x <= 780:
         jugador_x += x_cambio
     if jugador_x <0:
