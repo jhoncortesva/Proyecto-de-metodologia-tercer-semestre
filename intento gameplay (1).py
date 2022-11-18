@@ -3,7 +3,7 @@ from pygame import mixer
 import pygame, sys, random, time, math
 
 mixer.init()
-
+pygame.font.init()
 pygame.init()
 #rosas
 rosa_pastel=(255, 154, 162)
@@ -64,7 +64,7 @@ fondo= celeste_pastel
 
 fondo2= atardecer
 fps=60
-font = pygame.font.SysFont('8-BIT WONDER', 16)
+font = pygame.font.Font('fuentes/font2.otf', 15)
 temporizador=pygame.time.Clock()
 
 #cargar imagen
@@ -235,5 +235,4 @@ while funcionar:
     pygame.display.flip()
 pygame.quit()
 
-#Música cortesía de Multiversus - Warner Bros Games
 
