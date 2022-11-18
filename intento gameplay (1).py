@@ -1,6 +1,6 @@
 from operator import truediv
 from pygame import mixer
-import pygame, sys, random, time
+import pygame, sys, random, time, math
 
 mixer.init()
 
@@ -26,6 +26,8 @@ anchura=800
 altura=400
 color_piso=rosa_pastel
 
+fondote="fondo1.png"
+
 frases_feas=["Prueba abrir los ojos", "Una vuelta mas a la manzana", "Hoy podría ser el día", "Son solo 4 botones", "¡Tú Puedes!", "¡Excelente Trabajo!", "Vamos, una vez mas", "¿Nota superior?", "¡Lo intentamos!", "...Jhon estuvo aquí..."]
 frase_escoger=random.choice(frases_feas)
 
@@ -38,6 +40,7 @@ for i in range(60):
 
 
 #variables de juego
+
 puntaje=0
 velocidad=0
 jugador_x=50
@@ -55,7 +58,6 @@ mixer.set_num_channels(20)
 
 
 
-
 pantalla=pygame.display.set_mode([anchura, altura])
 pygame.display.set_caption('Cube Jumper')
 fondo= celeste_pastel
@@ -65,13 +67,30 @@ fps=60
 font = pygame.font.SysFont('8-BIT WONDER', 16)
 temporizador=pygame.time.Clock()
 
+#cargar imagen
+bg = pygame.image.load(fondote).convert()
+bg_width = bg.get_width()
+bg_rect = bg.get_rect()
+scroll = 0
+tiles = math.ceil(anchura  / bg_width) + 1
+
 funcionar=True
 
 
 while funcionar:
     
     temporizador.tick(fps)
-    pantalla.fill(fondo)
+    for i in range(0, tiles):
+        pantalla.blit(bg, (i * bg_width + scroll, 0))
+        bg_rect.x = i * bg_width + scroll
+        #pygame.draw.rect(pantalla, (255, 0, 0), bg_rect, 1)
+    if activo:    
+
+        scroll -= 3
+
+        if abs(scroll) > bg_width:
+            scroll = 0
+    
     if not activo:
         
         texto_instructivo= font.render(f'Para empezar ¡Salta!', True, azul_pastel)
@@ -133,6 +152,8 @@ while funcionar:
 
     for i in range(len(obstaculos)):
         if activo:
+            
+
             obstaculos[i] -= obstaculo_velocidad
             if obstaculos[i] < -20:
                 obstaculos[i] = random.randint(800, 1500)
