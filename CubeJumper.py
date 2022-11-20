@@ -22,8 +22,9 @@ blanco_pastel=(255, 255, 216)
 verde=(43, 153, 53)
 azul_pastel=(71, 98, 165)
 rojo_pastel=(255, 105, 97)
+rojo_pastell=(218, 247, 166)
 morado_pastel=(204, 169, 221)
-naranja_pastel=(255, 117, 20)
+naranja_pastel=(82, 245, 196)
 atardecer=(253, 223, 126)
 verde_oscuro=(45, 87, 44)
 verde2=(189, 174, 110)
@@ -139,7 +140,7 @@ while funcionar:
                 mixer.music.play(-1)
 
                 activo=True
-                salud=100
+                salud=1000
                 jugador_x = 50
                 puntaje = 0
                 obstaculos= [890, 1000, 1500, 2000, 2500, ]
@@ -162,7 +163,7 @@ while funcionar:
                 x_cambio = 0  
 
     if puntaje < 10:
-        obstaculo0 = pygame.draw.rect(pantalla, rojo_pastel, [obstaculos[0], 200, 20, 20])
+        obstaculo0 = pygame.draw.rect(pantalla, rojo_pastell, [obstaculos[0], 200, 20, 20])
         obstaculo1 = pygame.draw.rect(pantalla, morado_pastel, [obstaculos[1], 200, 20, 20])
         obstaculo2 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[2], 200, 20, 20])
         obstaculo3 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[3], 200, 20, 20])
@@ -185,7 +186,7 @@ while funcionar:
                 bg = pygame.image.load(fondo2).convert()
                 
             if puntaje >=10 and puntaje<30:
-                obstaculo0 = pygame.draw.rect(pantalla, rojo_pastel, [obstaculos[0], 180, 20, 40])
+                obstaculo0 = pygame.draw.rect(pantalla, rojo_pastell, [obstaculos[0], 180, 20, 40])
                 obstaculo1 = pygame.draw.rect(pantalla, morado_pastel, [obstaculos[1], 180, 20, 40])
                 obstaculo2 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[2], 180, 20, 40])
                 obstaculo3 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[3], 180, 20, 40])
@@ -214,7 +215,7 @@ while funcionar:
                 bg = pygame.image.load(fondo3).convert()
                 color_piso=negro
             if puntaje >= 30 and puntaje <50:
-                obstaculo0 = pygame.draw.rect(pantalla, rojo_pastel, [obstaculos[0], 200, 40, 20])
+                obstaculo0 = pygame.draw.rect(pantalla, rojo_pastell, [obstaculos[0], 200, 40, 20])
                 obstaculo1 = pygame.draw.rect(pantalla, morado_pastel, [obstaculos[1], 200, 40, 20])
                 obstaculo2 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[2], 200, 40, 20])
                 obstaculo3 = pygame.draw.rect(pantalla, naranja_pastel, [obstaculos[3], 200, 40, 20])
